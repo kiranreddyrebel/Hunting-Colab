@@ -195,6 +195,8 @@ def _download(url, path):
 def argoTunnel():
     _download("https://github.com/cloudflare/cloudflared/releases/download/2024.12.2/cloudflared-linux-amd64", "cloudflared")
     #shutil.unpack_archive("cloudflared.tgz")
+    get_ipython().system('ls')
+    get_ipython().system('chmod +x ./cloudflared')
     cfd_proc = subprocess.Popen(
         ["./cloudflared", "tunnel", "--url", "ssh://localhost:22", "--logfile", "cloudflared.log", "--metrics", "localhost:49589"],
         stdout = subprocess.PIPE,
